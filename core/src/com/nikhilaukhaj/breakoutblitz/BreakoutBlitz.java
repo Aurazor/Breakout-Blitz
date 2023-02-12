@@ -22,7 +22,7 @@ public class BreakoutBlitz extends ApplicationAdapter {
     public void create() {
         shape = new ShapeRenderer();
 //        ball = new Ball(r.nextInt(Gdx.graphics.getWidth()),r.nextInt(Gdx.graphics.getHeight()),r.nextInt(100),r.nextInt(15),r.nextInt(15));
-        ball = new Ball(100,100,10,1,1);
+        ball = new Ball(100,100,10,4,4);
         paddle = new Paddle(10,10,90,10,10);
 
     }
@@ -46,19 +46,15 @@ public class BreakoutBlitz extends ApplicationAdapter {
         shape.end();
     }
 
-    public void checkCollision(Ball ball, Paddle paddle, ShapeRenderer shape){
-        //TODO: check if ball if below paddle
-        // if yes then check if it collides with paddle
-        // else game over
-
+    public void checkCollision(Ball ball, Paddle padddle, ShapeRenderer shape){
         if(paddle.y + paddle.height > ball.y - ball.size){
-            if(paddle.x + paddle.width > ball.x || paddle.x < ball.x + ball.size){
+            if(!(ball.x + ball.size < paddle.x || ball.x > paddle.x + paddle.width)){
                 shape.setColor(Color.GREEN);
+                ball.y = -ball.y;
             }else{
                 shape.setColor(Color.RED);
             }
-//            return true;
         }
-//        return false;
     }
+
 }
