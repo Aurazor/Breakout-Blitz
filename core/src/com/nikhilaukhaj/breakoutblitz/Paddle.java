@@ -2,16 +2,10 @@ package com.nikhilaukhaj.breakoutblitz;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class Paddle {
-    int x;
-    int y;
-
-    int width;
-    int height;
+public class Paddle extends GameObject{
     int xSpeed;
     public Paddle(int x, int y, int width, int height, int xSpeed){
-        this.x = x;
-        this.y = y;
+        super(x,y, width, height);
         this.width = width;
         this.height = height;
         this.xSpeed = xSpeed;
